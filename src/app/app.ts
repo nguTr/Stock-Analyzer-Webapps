@@ -12,7 +12,7 @@ export class App {
   protected readonly title = signal('Stock-Analyzer-Webapps');
 
   constructor(private tickerService: TickerService) {
-    this.tickerService.getHello().subscribe((whatever) => console.log(whatever));
+    this.tickerService.getHello().subscribe((helloMsg: string) => console.log(helloMsg));
   }
 
 
