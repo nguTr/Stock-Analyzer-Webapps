@@ -1,12 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TickerService } from './tickers/tickers-service';
+import { TickersComponent } from './dashboard/tickers/tickers';
+import { TickerService } from './dashboard/tickers/tickers-service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, TickersComponent],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
   protected readonly title = signal('Stock-Analyzer-Webapps');
@@ -14,6 +15,4 @@ export class App {
   constructor(private tickerService: TickerService) {
     this.tickerService.getHello().subscribe((helloMsg: string) => console.log(helloMsg));
   }
-
-
 }
