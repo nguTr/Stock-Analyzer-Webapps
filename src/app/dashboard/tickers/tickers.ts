@@ -23,4 +23,13 @@ export class TickersComponent {
       this.currentTickerData.set(historyStr);
     });
   }
+
+  /**
+   * Write to .csv files weekly ticker history for selected tickers
+   */
+  writeTickersHistoryAll(): void {
+    this.tickerService.writeTickersHistoryAll().subscribe((whatever) => {
+      console.log(whatever);
+    });
+  }
 }
