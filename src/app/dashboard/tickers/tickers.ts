@@ -10,8 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './tickers.scss',
 })
 export class TickersComponent {
-
-  constructor(private tickerService: TickerService) { }
+  constructor(private tickerService: TickerService) {}
 
   currentTickerData: WritableSignal<string> = signal('');
 
@@ -30,6 +29,20 @@ export class TickersComponent {
   writeTickersHistoryAll(): void {
     this.tickerService.writeTickersHistoryAll().subscribe((whatever) => {
       console.log(whatever);
+    });
+  }
+
+  /**
+   * @returns Elasped time of writing history of weekly data of selected tickers
+   */
+  ingestFiles(): void {
+    this.tickerService.ingestTickersHistoryFiles().subscribe({
+      next: (statusText: string) => {
+        console.log(statusText);
+      },
+      error: (err) => {
+        console.log('Error ingesting files: ', err);
+      },
     });
   }
 }

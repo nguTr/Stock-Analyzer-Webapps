@@ -27,7 +27,16 @@ export class TickerService {
   /**
    * @returns Elasped time of writing history of weekly data of selected tickers
    */
-  writeTickersHistoryAll(): Observable<Response> {
-    return this.httpClient.get<Response>(`${this.BASE_URL}/allTickers/write/history`);
+  writeTickersHistoryAll(): Observable<string> {
+    return this.httpClient.get(`${this.BASE_URL}/allTickers/write/history`, {
+      responseType: 'text',
+    });
+  }
+
+  /**
+   * @returns Success/Error message of back-end batch ingestion of pre-existing weekly csv files.
+   */
+  ingestTickersHistoryFiles(): Observable<string> {
+    return this.httpClient.get(`${this.BASE_URL}/ingest-files`, { responseType: 'text' });
   }
 }
