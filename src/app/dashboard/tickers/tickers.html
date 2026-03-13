@@ -7,4 +7,9 @@
   <mat-icon>trending_up</mat-icon>Record All Tickers Weekly History
 </button>
 
+<!-- Button to ingest files tickers history to postgres -->
+<button mat-raised-button color="primary" (click)="ingestFiles()">
+  <mat-icon>trending_up</mat-icon>Ingest Existing Files
+</button>
+
 {{ currentTickerData() }}
