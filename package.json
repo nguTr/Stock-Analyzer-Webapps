@@ -1,5 +1,5 @@
 {
-  "name": "stock-analyzer-webapps",
+  "name": "acies-angular",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:Stock-Analyzer-Webapps": "node dist/Stock-Analyzer-Webapps/server/server.mjs"
+    "serve:ssr:Acies-Angular": "node dist/Acies-Angular/server/server.mjs"
   },
   "private": true,
   "packageManager": "npm@11.9.0",

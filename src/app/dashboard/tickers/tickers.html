@@ -1,15 +1,8 @@
-<button mat-raised-button color="primary" (click)="getTickerHistory()">
-  <mat-icon>trending_up</mat-icon>Get TSLA History
-</button>
-
 <!-- Button to write history of tickers to backend -->
 <button mat-raised-button color="primary" (click)="writeTickersHistoryAll()">
-  <mat-icon>trending_up</mat-icon>Record All Tickers Weekly History
+  <mat-icon>trending_up</mat-icon>Ingest tickers.txt
 </button>
 
-<!-- Button to ingest files tickers history to postgres -->
-<button mat-raised-button color="primary" (click)="ingestFiles()">
-  <mat-icon>trending_up</mat-icon>Ingest Existing Files
+<button mat-raised-button color="primary" (click)="rebuildFeaturesMasterWeekly()">
+  <mat-icon>refresh</mat-icon>Rebuild Features Master Weekly
 </button>
-
-{{ currentTickerData() }}

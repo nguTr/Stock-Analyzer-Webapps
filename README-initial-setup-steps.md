@@ -4,7 +4,7 @@ https://nodejs.org/en/download
 ## Install Angular CLI
 ```
 npm install -g @angular/cli
-ng new Stock-Analyzer-Webapps
+ng new Acies-Angular
 ```
 
 ## Run
