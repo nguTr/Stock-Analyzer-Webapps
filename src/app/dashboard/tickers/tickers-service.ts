@@ -10,33 +10,18 @@ export class TickerService {
 
   private BASE_URL = 'api/tickers';
 
-  getHello(): Observable<string> {
-    return this.httpClient.get('/api/hello', { responseType: 'text' });
-  }
-
-  /**
-   * @param tickerSymbol
-   * @returns ticker weekly history
-   */
-  getTickerHistory(tickerSymbol: string): Observable<string> {
-    return this.httpClient.get(`${this.BASE_URL}/${tickerSymbol}/history`, {
-      responseType: 'text',
-    });
-  }
-
   /**
    * @returns Elasped time of writing history of weekly data of selected tickers
    */
   writeTickersHistoryAll(): Observable<string> {
-    return this.httpClient.get(`${this.BASE_URL}/allTickers/write/history`, {
+    return this.httpClient.get(`${this.BASE_URL}/write/history`, {
       responseType: 'text',
     });
   }
 
-  /**
-   * @returns Success/Error message of back-end batch ingestion of pre-existing weekly csv files.
-   */
-  ingestTickersHistoryFiles(): Observable<string> {
-    return this.httpClient.get(`${this.BASE_URL}/ingest-files`, { responseType: 'text' });
+  rebuildFeaturesMasterWeekly(): Observable<string> {
+    return this.httpClient.get(`${this.BASE_URL}/rebuild/features-master-weekly`, {
+      responseType: 'text'
+    })
   }
 }

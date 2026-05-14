@@ -10,9 +10,8 @@ import { TickerService } from './dashboard/tickers/tickers-service';
   styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('Stock-Analyzer-Webapps');
+  protected readonly title = signal('Acies-Angular');
 
   constructor(private tickerService: TickerService) {
-    this.tickerService.getHello().subscribe((helloMsg: string) => console.log(helloMsg));
   }
 }

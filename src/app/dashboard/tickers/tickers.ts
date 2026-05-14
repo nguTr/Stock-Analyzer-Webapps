@@ -12,17 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 export class TickersComponent {
   constructor(private tickerService: TickerService) {}
 
-  currentTickerData: WritableSignal<string> = signal('');
-
-  /**
-   * Get ticker weekly history for 'TSLA'
-   */
-  getTickerHistory(): void {
-    this.tickerService.getTickerHistory('TSLA').subscribe((historyStr: string) => {
-      this.currentTickerData.set(historyStr);
-    });
-  }
-
   /**
    * Write to .csv files weekly ticker history for selected tickers
    */
@@ -32,17 +21,9 @@ export class TickersComponent {
     });
   }
 
-  /**
-   * @returns Elasped time of writing history of weekly data of selected tickers
-   */
-  ingestFiles(): void {
-    this.tickerService.ingestTickersHistoryFiles().subscribe({
-      next: (statusText: string) => {
-        console.log(statusText);
-      },
-      error: (err) => {
-        console.log('Error ingesting files: ', err);
-      },
-    });
+  rebuildFeaturesMasterWeekly(): void {
+    this.tickerService.rebuildFeaturesMasterWeekly().subscribe((whatever) => {
+      console.log(whatever);
+    })
   }
 }
