@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+/**
+ * Live Holdout Simulation Service
+ */
 @Injectable({
     providedIn: 'root',
 })
 export class SimulationService {
 
-    constructor(private httpClient: HttpClient) { }
-
+    private httpClient = inject(HttpClient);
     private BASE_URL = "api/simulator";
 
     /**

@@ -1,0 +1,14 @@
+.actionbar-main {
+    height: inherit;
+
+    mat-card {
+        background-color: var(--mat-sys-surface);
+        height: inherit;
+        padding: 0.5em;
+
+        .mat-mdc-card-actions {
+            flex-direction: column;
+            gap: 0.5em;
+        }
+    }
+}

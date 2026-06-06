@@ -1,0 +1,26 @@
+:host {
+    min-height: 0;
+}
+
+mat-card {
+    height: 100%;
+    overflow: auto;
+}
+
+.table-container {
+    height: 100%;
+    padding: 1.5em;
+
+    .table-header {
+        display: flex;
+        justify-content: space-between;
+
+        .centered {
+            margin: auto 0;
+        }
+    }
+
+    table {
+        padding: 1em;
+    }
+}
