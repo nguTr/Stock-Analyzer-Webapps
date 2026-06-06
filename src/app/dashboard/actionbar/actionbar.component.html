@@ -1,0 +1,21 @@
+<main class="actionbar-main">
+    <mat-card appearance="outlined">
+        <mat-card-actions>
+
+            <!-- Reingest Norgate Data Button -->
+            <button mat-icon-button class="icon-button" matTooltip="Reingest Norgate Data" matTooltipPosition="right"
+                (click)="reingestNorgateData()">
+                <mat-icon>currency_exchange</mat-icon>
+            </button>
+
+            <!-- Rebuild ML Master Features -->
+            <button mat-icon-button class="icon-button" matTooltip="Rebuild Master Features"
+                matTooltipPosition="right"><mat-icon>model_training</mat-icon></button>
+
+            <!-- Run Live Holdout Simulation -->
+            <button mat-icon-button class="icon-button" matTooltip="Run Trade Simulation" matTooltipPosition="right"
+                (click)="runSimulator()"><mat-icon>simulation</mat-icon></button>
+
+        </mat-card-actions>
+    </mat-card>
+</main>

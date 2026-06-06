@@ -1,0 +1,56 @@
+/* Main Layout */
+.dashboard-grid {
+    display: grid;
+    height: 100dvh;
+    width: 100vw;
+    padding: 1.5em;
+    box-sizing: border-box;
+    gap: 1em;
+
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 3fr 2fr;
+}
+
+/* Left Action Bar */
+.actionbar-area {
+
+    /* Spans top to bottom */
+    grid-column: 1;
+    grid-row: 1/6;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    app-actionbar {
+        height: 100%;
+    }
+}
+
+.header-area {
+    grid-column: 2;
+    grid-row: 1;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chart-area {
+    grid-column: 2;
+    grid-row: 2;
+
+    overflow-y: auto;
+    /* Lets your charts/tables scroll if they overflow */
+}
+
+.campaigns-area {
+    grid-column: 2;
+    grid-row: 3;
+    min-height: 0; // strictly set the height
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}

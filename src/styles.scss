@@ -1,39 +1,107 @@
-// Include theming for Angular Material with `mat.theme()`.
-// This Sass mixin will define CSS variables that are used for styling Angular Material
-// components according to the Material 3 design spec.
-// Learn more about theming and how to use it for your application's
-// custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
-html {
-  height: 100%;
-  @include mat.theme(
-    (
-      color: (
-        primary: mat.$azure-palette,
-        tertiary: mat.$blue-palette,
-      ),
-      typography: Roboto,
-      density: 0,
-    )
-  );
-}
+$dark-theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$cyan-palette, 
+    tertiary: mat.$azure-palette, 
+  ),
+  typography: (
+    plain-family: '"Inter", sans-serif',
+    brand-family: '"Inter", sans-serif'
+  ),
+  density: (
+    scale: 0
+  )
+));
 
-body {
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
-  color-scheme: light;
+:root {
+  @include mat.all-component-themes($dark-theme);
+  
+  /* =========================================
+     THE "PRIME-NG" TERMINAL OVERRIDES
+     ========================================= */
+     
+  /* 1. Backgrounds (The deep charcoal canvas) */
+  --mat-sys-background: #09090b; 
+  --mat-sys-surface: #18181b; /* The panels and cards */
+  --mat-sys-surface-container: #18181b; 
+  
+  /* 2. Hover States & Secondary Surfaces */
+  --mat-sys-surface-container-high: #27272a; 
+  --mat-sys-surface-container-highest: #3f3f46;
 
-  // Set a default background, font and text colors for the application using
-  // Angular Material's system-level CSS variables. Learn more about these
-  // variables at https://material.angular.dev/guide/system-variables
-  background-color: var(--mat-sys-surface);
+  /* 3. Borders & Dividers (Very subtle lines) */
+  --mat-sys-outline: #27272a;
+  --mat-sys-outline-variant: #27272a;
+
+  /* 4. Typography (High contrast white, muted grays) */
+  --mat-sys-on-surface: #fafafa;
+  --mat-sys-on-surface-variant: #a1a1aa; /* The muted gray text */
+
+  /* Apply the global canvas colors */
+  background-color: var(--mat-sys-background); 
   color: var(--mat-sys-on-surface);
-  font: var(--mat-sys-body-medium);
-
-  // Reset the user agent margin.
-  margin: 0;
-  height: 100%;
 }
-/* You can add global styles to this file, and also import other style files */
+
+/* Font Overrides */
+body {
+  /* Force Inter as the baseline for the entire app */
+  font-family: 'Inter', sans-serif;
+  
+  /* Keep your tabular numbers for the financial data */
+  font-variant-numeric: tabular-nums;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100dvh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Force all mat-icons to use the modern Material Symbols library */
+.mat-icon {
+  font-family: 'Material Symbols Outlined' !important;
+}
+
+/* Blue White Text */
+.blue-white {
+  color: #cee8ff !important;
+}
+
+/* Outline Color */
+.blue-grey {
+  color: #323d4b;
+}
+
+/* Chaining classes guarantees we outrank Material's default 50% border-radius */
+.icon-button.mat-mdc-icon-button {
+
+  // Give it a little breathing room
+  margin-bottom: 8px;
+  border-radius: 8px; // Slightly rounded
+  transition: background-color 0.2s ease;
+
+  // Kill the Material hover circle
+  .mat-mdc-button-persistent-ripple,
+  .mat-mdc-button-ripple {
+    display: none !important;
+  }
+
+  // Target icon directly to override Material's default
+  mat-icon {
+    color: var(--mat-sys-on-surface-variant); // Muted Gray
+    transition: color 0.2s ease;
+  }
+
+  // Hover over state
+  &:hover, &.active {
+    background-color: var(--mat-sys-surface-container-high); // Bright white on hover
+    
+    mat-icon {
+      color: var(--mat-sys-on-surface); // Bright white when active
+    }
+  }
+}
